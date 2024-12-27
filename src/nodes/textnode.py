@@ -1,6 +1,15 @@
+"""
+Defines the different types of text nodes
+"""
+
 from enum import Enum
 
+
 class TextType(Enum):
+    """
+    Provides the different types of text that can exist
+    """
+
     TEXT = "text"
     BOLD = "bold"
     ITALIC = "italic"
@@ -8,8 +17,13 @@ class TextType(Enum):
     LINK = "link"
     IMAGE = "image"
 
+
 class TextNode:
-    def __init__(self, text: str, text_type: TextType, url = None):
+    """
+    Describes the text format
+    """
+
+    def __init__(self, text: str, text_type: TextType, url=None):
         self.text = text
         self.text_type = text_type
         self.url = url
