@@ -6,7 +6,7 @@ from nodes.textnode import TextNode, TextType
 
 class TestTextToTextNodes(unittest.TestCase):
     def test_should_convert_text(self):
-        text = "This is **text** with an *italic* word and a `code block` and an ![obi wan image](https://i.imgur.com/fJRm4Vk.jpeg) and a [link](https://google.com)"
+        text = "This is **text** with an _italic_ word and a `code block` and an ![obi wan image](https://i.imgur.com/fJRm4Vk.jpeg) and a [link](https://google.com)"
 
         nodes = text_to_textnodes(text)
 
@@ -46,7 +46,7 @@ class TestTextToTextNodes(unittest.TestCase):
         self.assertEqual(nodes, expected)
 
     def test_nested_formatting(self):
-        text = "This is **bold with *italic* inside**"
+        text = "This is **bold with _italic_ inside**"
         nodes = text_to_textnodes(text)
         expected = [
             TextNode("This is ", TextType.TEXT),
@@ -67,7 +67,7 @@ class TestTextToTextNodes(unittest.TestCase):
         self.assertEqual(nodes, expected)
 
     def test_incomplete_formatting(self):
-        text = "This has *incomplete formatting"
+        text = "This has _incomplete formatting"
         with self.assertRaises(Exception) as context:
             text_to_textnodes(text)
         self.assertTrue("Invalid Markdown syntax" in str(context.exception))

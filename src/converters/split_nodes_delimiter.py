@@ -24,8 +24,8 @@ def split_nodes_delimiter(
                 new_nodes.append(TextNode(text, TextType.TEXT))
             else:
                 # For text inside delimiters, recursively process for other delimiters
-                if delimiter == "**" and "*" in text:  # Handle nested italic in bold
-                    nested_nodes = split_nodes_delimiter([TextNode(text, TextType.TEXT)], "*", TextType.ITALIC)
+                if delimiter == "**" and "_" in text:  # Handle nested italic in bold
+                    nested_nodes = split_nodes_delimiter([TextNode(text, TextType.TEXT)], "_", TextType.ITALIC)
                     for nested_node in nested_nodes:
                         if nested_node.text_type == TextType.TEXT:
                             new_nodes.append(TextNode(nested_node.text, text_type))
